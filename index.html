@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE ahtml>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MysticWeather</title>
     <!-- Favicon for the browser tab -->
-    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48ZmlsdGVyIGlkPSJnbG93Ij48ZmVDb2xvck1hdHJpeCBpbiJGaWx0ZXJNb3JwaCIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjUgMCAwIDAgMTAgMCIvPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjUiIHJlc3VsdD0iYmx1ciIvPjxmZVRyYW5zZm9ybSIgaW49ImJsdXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEsMSkiLz48ZmVDb21wb3NpdGUgaW49IkZpbHRlckdyYXBoaWMiIGluMj0iYmx1ciIgb3BlcmF0b3I9Im92ZXIiLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9ImNlbnRyYWwiIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgUHJpbWUnLCBtb25vc3BhY2U7IGZvbnQtd2VpZ2h0OiBib2xkOyBmb250LXNpemU6IDcwcHg7IGZpbGw6ICMwMGZmMDA7IGZpbHRlcjogdXJsKCNnbG93KTsiPk1XPC90ZXh0Pjwvc3ZnPg==" type="image/svg+xml">
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48ZmlsdGVyIGlkPSJnbG93Ij48ZmVDb2xvck1hdHJpeCBpbiJGaWx0ZXJNb3JwaCIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjUgMCAwIDAgMTAgMCIvPjxmZUdhdXNzaWFuQmx1ciBzd GreerEph2hhdGlvbj0iNSIgcmVzdWx0PSJibHVyIi8+PGZlVHJhbnNmb3JtIiBpbj0iYmx1ciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSwxKSIvPjxmZUNvbXBvc2l0ZSBpbj0iRmlsdGVyR3JhcGhpYyIgaW4yPSJibHVyIiBvcGVyYXRvcj0ib3ZlciIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzAwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgc3R5bGU9ImZvbnQtZmFtaWx5OiAnQ291cmllciBQcmltZScsIG1vbm9zcGFjZTsgZm9udC13ZWlnaHQ6IGJvbGQ7IGZvbnQtc2l6ZTogNzBweDsgZmlsbDogIzAwZmYwMDsgZmlsdGVyOiB1cmwoI2dsb3cpOyI+TVc8L3RleHQ+PC9zdmc+">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -28,20 +28,34 @@
             from { width: 0 }
             to { width: 100% }
         }
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
 
-    <div class="w-full max-w-2xl bg-black border-2 border-green-500 rounded-lg container-shadow p-8 transition-all duration-300">
+    <div class="w-full max-w-2xl bg-black border-2 border-green-500 rounded-lg container-shadow p-4 sm:p-8 transition-all duration-300">
         <div class="flex flex-col items-center text-center">
-            <h1 class="text-4xl font-bold glow mb-2">MYSTICWEATHER</h1>
-            <p class="text-green-300 mb-6"> > SYSTEM READY. AWAITING COMMAND.</p>
+            <h1 class="text-2xl sm:text-4xl font-bold glow mb-2">MYSTICWEATHER</h1>
+            <p class="text-green-300 mb-6 text-sm sm:text-base"> > SYSTEM READY. TYPE LOCATION TO BEGIN.</p>
         </div>
 
         <!-- Command Line Interface -->
         <div class="mb-6">
-            <div class="flex items-center space-x-2">
-                <span class="text-green-300">> /weather/query/</span>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                <span class="text-green-300 text-sm sm:text-base">> /weather/query/</span>
                 <input type="text" id="location-input" placeholder="location"
                        class="flex-grow bg-transparent text-green-400 border-b-2 border-green-500 focus:outline-none focus:border-green-300 transition duration-200">
                 <button id="search-button" class="bg-green-700 text-white p-2 rounded-md font-semibold hover:bg-green-600 transition duration-200">
@@ -51,7 +65,7 @@
         </div>
 
         <!-- Terminal Output -->
-        <div id="output-terminal" class="bg-gray-900 border border-green-500 container-shadow p-4 rounded-md h-96 overflow-y-auto">
+        <div id="output-terminal" class="bg-gray-900 border border-green-500 container-shadow p-4 rounded-md h-96 overflow-y-auto text-xs sm:text-sm">
             <p id="initial-message" class="text-green-500">> _</p>
         </div>
 
@@ -75,8 +89,7 @@
             const messageText = document.getElementById('message-text');
             const closeMessageButton = document.getElementById('close-message');
 
-            // IMPORTANT: Replace 'YOUR_API_KEY' with your valid WeatherAPI.com key
-            const API_KEY = '7a7e968d1556475b8b994242250409';
+            const WEATHER_API_KEY = '7a7e968d1556475b8b994242250409';
             
             const showMessage = (text) => {
                 messageText.textContent = text;
@@ -123,7 +136,7 @@
                 outputTerminal.innerHTML = '';
                 displayOutput(`> EXECUTING QUERY FOR LOCATION: ${location.toUpperCase()}`);
 
-                if (API_KEY === 'YOUR_API_KEY') {
+                if (WEATHER_API_KEY === 'YOUR_API_KEY') {
                     showMessage("API KEY ERROR: PLEASE REPLACE 'YOUR_API_KEY' WITH A VALID KEY FROM WEATHERAPI.COM.");
                     return;
                 }
@@ -132,8 +145,7 @@
                     await wait(500);
                     await simulateTyping('> PINGING MYSTICWEATHER...');
 
-                    // Fetch current weather
-                    const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=5`;
+                    const url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=5`;
                     const response = await fetch(url);
                     if (!response.ok) {
                         const errorData = await response.json();
@@ -151,19 +163,38 @@
                     displayOutput(`> LOCATION: ${data.location.name.toUpperCase()}, ${data.location.country}`);
                     displayOutput(`> CURRENT TEMP: ${Math.round(data.current.temp_c)}°C`);
                     displayOutput(`> CONDITIONS: ${data.current.condition.text}`);
+                    displayOutput(`> HUMIDITY: ${data.current.humidity}%`);
                     displayOutput(`> WIND SPEED: ${Math.round(data.current.wind_kph)} km/h`);
+                    displayOutput(`> UV INDEX: ${data.current.uv}`);
                     displayOutput('---------------------------------');
 
                     displayOutput(' ');
-                    displayOutput('> FORECASTING...');
+                    displayOutput('> 5-DAY FORECAST');
                     displayOutput('---------------------------------');
 
-                    // Display the next 5 days
                     data.forecast.forecastday.forEach(day => {
                         const date = new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' });
                         displayOutput(`> ${date}: ${day.day.condition.text} | ${Math.round(day.day.maxtemp_c)}°C / ${Math.round(day.day.mintemp_c)}°C`);
                     });
 
+                    displayOutput('---------------------------------');
+                    
+                    // New Hourly Forecast section
+                    displayOutput(' ');
+                    displayOutput('> UPCOMING HOURLY FORECAST (NEXT 8 HOURS)');
+                    displayOutput('---------------------------------');
+                    const now = new Date(data.location.localtime);
+                    const currentHour = now.getHours();
+                    const hoursData = data.forecast.forecastday[0].hour;
+
+                    for (let i = 0; i < 8; i++) {
+                        const hourlyData = hoursData[(currentHour + i) % 24];
+                        const time = new Date(hourlyData.time).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
+                        const temp = Math.round(hourlyData.temp_c);
+                        const condition = hourlyData.condition.text;
+                        displayOutput(`> ${time}: ${temp}°C, ${condition}`);
+                    }
+                    
                     displayOutput('---------------------------------');
                     displayOutput(' ');
                     displayOutput('> QUERY COMPLETE. SYSTEM IDLE.');
@@ -174,21 +205,353 @@
                     console.error('API Error: ', error);
                 }
             };
+            
+            const fetchRainSchedule = async (location) => {
+                outputTerminal.innerHTML = '';
+                displayOutput(`> ANALYZING PRECIPITATION FOR: ${location.toUpperCase()}`);
+
+                if (WEATHER_API_KEY === 'YOUR_API_KEY') {
+                    showMessage("API KEY ERROR: PLEASE REPLACE 'YOUR_API_KEY' WITH A VALID KEY FROM WEATHERAPI.COM.");
+                    return;
+                }
+                
+                try {
+                    await wait(500);
+                    await simulateTyping('> INITIATING HYDROMETRIC SCAN...');
+                    const url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=1`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error.message);
+                    }
+                    const data = await response.json();
+                    
+                    await simulateTyping('> PROCESSING FOR NEXT 24 HOURS...');
+                    await wait(1500);
+                    
+                    displayOutput(' ');
+                    displayOutput('---------------------------------');
+                    displayOutput(`> RAIN CHANCE: NEXT 24 HOURS`);
+                    
+                    const now = new Date();
+                    const currentHour = now.getHours();
+                    const hoursData = data.forecast.forecastday[0].hour;
+                    
+                    let totalPrecipitation = 0;
+                    
+                    for(let i = 0; i < 24; i++) {
+                        const hourIndex = (currentHour + i) % 24;
+                        const hourlyData = hoursData[hourIndex];
+                        const time = new Date(hourlyData.time).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
+                        const chance = hourlyData.chance_of_rain;
+                        const barLength = Math.ceil(chance / 10);
+                        const bar = '█'.repeat(barLength).padEnd(10, ' ');
+                        displayOutput(`> ${time.padStart(7, ' ')} | [${bar}] ${chance}%`);
+                        totalPrecipitation += hourlyData.precip_mm;
+                    }
+
+                    displayOutput('---------------------------------');
+                    displayOutput(`> TOTAL PRECIPITATION: ${totalPrecipitation.toFixed(2)} mm`);
+                    
+                    // Recommendation based on total precipitation
+                    let recommendation = '';
+                    if (totalPrecipitation > 10) {
+                        recommendation = 'Heavy rainfall expected. Prepare for significant wet weather.';
+                    } else if (totalPrecipitation > 1) {
+                        recommendation = 'Light to moderate rain is likely. An umbrella is recommended.';
+                    } else if (totalPrecipitation > 0) {
+                        recommendation = 'Chance of light drizzle. You may not need an umbrella.';
+                    } else {
+                        recommendation = 'No precipitation expected. You can leave your umbrella at home.';
+                    }
+                    
+                    displayOutput(`> RECOMMENDATION: ${recommendation}`);
+
+                    displayOutput('---------------------------------');
+                    displayOutput(' ');
+                    displayOutput('> SCAN COMPLETE. SYSTEM IDLE.');
+                } catch (error) {
+                    displayOutput(`> ERROR: ${error.message.toUpperCase()}`);
+                    displayOutput('> SCAN FAILED. PLEASE TRY AGAIN.');
+                    console.error('API Error: ', error);
+                }
+            };
+
+            const fetchSkyData = async (location) => {
+                outputTerminal.innerHTML = '';
+                displayOutput(`> ANALYZING CELESTIAL DATA FOR: ${location.toUpperCase()}`);
+
+                if (WEATHER_API_KEY === 'YOUR_API_KEY') {
+                    showMessage("API KEY ERROR: PLEASE REPLACE 'YOUR_API_KEY' WITH A VALID KEY FROM WEATHERAPI.COM.");
+                    return;
+                }
+
+                try {
+                    await wait(500);
+                    await simulateTyping('> PINGING MYSTICWEATHER...');
+                    const url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=1`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error.message);
+                    }
+                    const data = await response.json();
+
+                    await simulateTyping('> RETRIEVING ASTRONOMICAL DATA...');
+                    await wait(1500);
+
+                    const astroData = data.forecast.forecastday[0].astro;
+
+                    displayOutput(' ');
+                    displayOutput('---------------------------------');
+                    displayOutput(`> CELESTIAL DATA FOR: ${data.location.name.toUpperCase()}`);
+                    displayOutput(`> SUNRISE: ${astroData.sunrise}`);
+                    displayOutput(`> SUNSET: ${astroData.sunset}`);
+                    displayOutput(`> MOONRISE: ${astroData.moonrise}`);
+                    displayOutput(`> MOONSET: ${astroData.moonset}`);
+                    displayOutput(`> MOON PHASE: ${astroData.moon_phase}`);
+                    displayOutput(`> MOON ILLUMINATION: ${astroData.moon_illumination}%`);
+                    displayOutput('---------------------------------');
+                    displayOutput(' ');
+                    displayOutput('> SCAN COMPLETE. SYSTEM IDLE.');
+
+                } catch (error) {
+                    displayOutput(`> ERROR: ${error.message.toUpperCase()}`);
+                    displayOutput('> SYSTEM FAILED. PLEASE TRY AGAIN.');
+                    console.error('API Error: ', error);
+                }
+            };
+            
+            const fetchWindData = async (location) => {
+                outputTerminal.innerHTML = '';
+                displayOutput(`> ANALYZING WIND DATA FOR: ${location.toUpperCase()}`);
+
+                if (WEATHER_API_KEY === 'YOUR_API_KEY') {
+                    showMessage("API KEY ERROR: PLEASE REPLACE 'YOUR_API_KEY' WITH A VALID KEY FROM WEATHERAPI.COM.");
+                    return;
+                }
+
+                try {
+                    await wait(500);
+                    await simulateTyping('> INITIATING ATMOSPHERIC SCAN...');
+                    const url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=1`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error.message);
+                    }
+                    const data = await response.json();
+
+                    await simulateTyping('> RETRIEVING WIND INFORMATION...');
+                    await wait(1500);
+
+                    const windData = data.current;
+
+                    displayOutput(' ');
+                    displayOutput('---------------------------------');
+                    displayOutput(`> CURRENT WIND DATA FOR: ${data.location.name.toUpperCase()}`);
+                    displayOutput(`> WIND SPEED: ${Math.round(windData.wind_kph)} km/h (${windData.wind_dir})`);
+                    displayOutput(`> WIND GUST: ${Math.round(windData.gust_kph)} km/h`);
+                    displayOutput(`> PRESSURE: ${windData.pressure_mb} mb`);
+                    displayOutput('---------------------------------');
+                    displayOutput(' ');
+                    displayOutput('> SCAN COMPLETE. SYSTEM IDLE.');
+
+                } catch (error) {
+                    displayOutput(`> ERROR: ${error.message.toUpperCase()}`);
+                    displayOutput('> SYSTEM FAILED. PLEASE TRY AGAIN.');
+                    console.error('API Error: ', error);
+                }
+            };
+
+            const fetchAirQuality = async (location) => {
+                outputTerminal.innerHTML = '';
+                displayOutput(`> ANALYZING AIR QUALITY DATA FOR: ${location.toUpperCase()}`);
+
+                if (WEATHER_API_KEY === 'YOUR_API_KEY') {
+                    showMessage("API KEY ERROR: PLEASE REPLACE 'YOUR_API_KEY' WITH A VALID KEY FROM WEATHERAPI.COM.");
+                    return;
+                }
+
+                try {
+                    await wait(500);
+                    await simulateTyping('> INITIATING ENVIRONMENTAL SCAN...');
+                    const url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=1&aqi=yes`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error.message);
+                    }
+                    const data = await response.json();
+
+                    await simulateTyping('> RETRIEVING POLLUTANT LEVELS...');
+                    await wait(1500);
+
+                    const airQuality = data.current.air_quality;
+                    const aqi = airQuality['us-epa-index'];
+                    const aqiText = aqi === 1 ? 'Good' : aqi === 2 ? 'Moderate' : aqi === 3 ? 'Unhealthy for Sensitive Groups' : aqi === 4 ? 'Unhealthy' : aqi === 5 ? 'Very Unhealthy' : 'Hazardous';
+
+                    displayOutput(' ');
+                    displayOutput('---------------------------------');
+                    displayOutput(`> AIR QUALITY FOR: ${data.location.name.toUpperCase()}`);
+                    displayOutput(`> US-EPA INDEX: ${aqi} (${aqiText})`);
+                    displayOutput(`> CARBON MONOXIDE (CO): ${airQuality.co.toFixed(2)} µg/m³`);
+                    displayOutput(`> NITROGEN DIOXIDE (NO2): ${airQuality.no2.toFixed(2)} µg/m³`);
+                    displayOutput(`> OZONE (O3): ${airQuality.o3.toFixed(2)} µg/m³`);
+                    displayOutput(`> SULFUR DIOXIDE (SO2): ${airQuality.so2.toFixed(2)} µg/m³`);
+                    displayOutput(`> PM2.5: ${airQuality.pm2_5.toFixed(2)} µg/m³`);
+                    displayOutput(`> PM10: ${airQuality.pm10.toFixed(2)} µg/m³`);
+                    displayOutput('---------------------------------');
+                    displayOutput(' ');
+                    displayOutput('> SCAN COMPLETE. SYSTEM IDLE.');
+
+                } catch (error) {
+                    displayOutput(`> ERROR: ${error.message.toUpperCase()}`);
+                    displayOutput('> SYSTEM FAILED. PLEASE TRY AGAIN.');
+                    console.error('API Error: ', error);
+                }
+            };
+
+            const fetchUVForecast = async (location) => {
+                outputTerminal.innerHTML = '';
+                displayOutput(`> ANALYZING UV DATA FOR: ${location.toUpperCase()}`);
+
+                if (WEATHER_API_KEY === 'YOUR_API_KEY') {
+                    showMessage("API KEY ERROR: PLEASE REPLACE 'YOUR_API_KEY' WITH A VALID KEY FROM WEATHERAPI.COM.");
+                    return;
+                }
+
+                try {
+                    await wait(500);
+                    await simulateTyping('> INITIATING UV SPECTRUM SCAN...');
+                    const url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=5`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error.message);
+                    }
+                    const data = await response.json();
+
+                    await simulateTyping('> RETRIEVING DAILY UV FORECAST...');
+                    await wait(1500);
+
+                    displayOutput(' ');
+                    displayOutput('---------------------------------');
+                    displayOutput('> 5-DAY UV FORECAST');
+                    displayOutput('---------------------------------');
+                    
+                    data.forecast.forecastday.forEach(day => {
+                        const date = new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' });
+                        const uvIndex = day.day.uv;
+                        let uvWarning = 'Minimal danger.';
+                        if (uvIndex >= 3 && uvIndex <= 5) {
+                            uvWarning = 'Moderate risk of harm from unprotected sun exposure.';
+                        } else if (uvIndex >= 6 && uvIndex <= 7) {
+                            uvWarning = 'High risk. Protection is needed.';
+                        } else if (uvIndex >= 8 && uvIndex <= 10) {
+                            uvWarning = 'Very High risk. Extra protection is needed.';
+                        } else if (uvIndex >= 11) {
+                            uvWarning = 'Extreme risk. Take all precautions.';
+                        }
+
+                        displayOutput(`> ${date}: UV INDEX ${uvIndex}`);
+                        displayOutput(`>   - WARNING: ${uvWarning}`);
+                        displayOutput(' ');
+                    });
+                    
+                    displayOutput('---------------------------------');
+                    displayOutput('> SCAN COMPLETE. SYSTEM IDLE.');
+
+                } catch (error) {
+                    displayOutput(`> ERROR: ${error.message.toUpperCase()}`);
+                    displayOutput('> SYSTEM FAILED. PLEASE TRY AGAIN.');
+                    console.error('API Error: ', error);
+                }
+            };
+
 
             const handleSearch = () => {
-                const location = locationInput.value.trim();
-                if (!location) {
+                const fullCommand = locationInput.value.trim().toLowerCase();
+                if (!fullCommand) {
                     showMessage("QUERY DENIED: LOCATION FIELD EMPTY.");
                     return;
                 }
+                
+                outputTerminal.innerHTML = ''; // Clear previous output
+                
+                const parts = fullCommand.split(' ');
+                const command = parts[0];
+                const location = parts.slice(1).join(' ');
 
-                if (location.toLowerCase() === 'creation') {
-                    outputTerminal.innerHTML = '';
-                    displayOutput('Made by MysticHero');
-                    return;
+                switch (command) {
+                    case 'clear':
+                        outputTerminal.innerHTML = '';
+                        displayOutput(`> TERMINAL CLEANSED.`);
+                        break;
+                    case 'creation':
+                        displayOutput('> IDENTIFICATION: I am a large language model from MysticHero.');
+                        displayOutput('> PRIMARY FUNCTION: My purpose is to assist with tasks, answer questions, and generate creative content.');
+                        displayOutput('> ARCHITECTURE: My core is built on a Neural Network 2.0 architecture.');
+                        displayOutput('> DEPLOYMENT: I am the engine behind the MysticWeather system, here to help you navigate the elements.');
+                        displayOutput('> ALL RIGHTS RESERVED.');
+                        break;
+                    case 'command':
+                    case 'command list':
+                        displayOutput(' ');
+                        displayOutput('---------------------------------');
+                        displayOutput('> AVAILABLE COMMANDS:');
+                        displayOutput('> WEATHER <LOCATION> - General weather report');
+                        displayOutput('> RAIN <LOCATION> - 24-hour rain forecast');
+                        displayOutput('> SKY <LOCATION> - Celestial data (sunrise, moon phase)');
+                        displayOutput('> WIND <LOCATION> - Wind speed and pressure');
+                        displayOutput('> AIR <LOCATION> - Air quality report');
+                        displayOutput('> UV <LOCATION> - 5-day UV index forecast');
+                        displayOutput('> CLEAR - Clears the terminal output');
+                        displayOutput('> CREATION - Developer information');
+                        displayOutput('> COMMAND LIST - Displays this list');
+                        displayOutput('---------------------------------');
+                        displayOutput(' ');
+                        displayOutput('> SCAN COMPLETE. SYSTEM IDLE.');
+                        break;
+                    case 'rain':
+                        if (location) {
+                            fetchRainSchedule(location);
+                        } else {
+                            showMessage("QUERY DENIED: PLEASE SPECIFY A LOCATION FOR RAIN SCHEDULE.");
+                        }
+                        break;
+                    case 'sky':
+                        if (location) {
+                            fetchSkyData(location);
+                        } else {
+                            showMessage("QUERY DENIED: PLEASE SPECIFY A LOCATION FOR SKY DATA.");
+                        }
+                        break;
+                    case 'wind':
+                        if (location) {
+                            fetchWindData(location);
+                        } else {
+                            showMessage("QUERY DENIED: PLEASE SPECIFY A LOCATION FOR WIND DATA.");
+                        }
+                        break;
+                    case 'air':
+                        if (location) {
+                            fetchAirQuality(location);
+                        } else {
+                            showMessage("QUERY DENIED: PLEASE SPECIFY A LOCATION FOR AIR QUALITY DATA.");
+                        }
+                        break;
+                    case 'uv':
+                        if (location) {
+                            fetchUVForecast(location);
+                        } else {
+                            showMessage("QUERY DENIED: PLEASE SPECIFY A LOCATION FOR UV FORECAST.");
+                        }
+                        break;
+                    default:
+                        fetchWeatherData(fullCommand);
+                        break;
                 }
-
-                fetchWeatherData(location);
             };
 
             searchButton.addEventListener('click', handleSearch);
@@ -198,6 +561,8 @@
                     handleSearch();
                 }
             });
+            
+            displayOutput(`> SYSTEM ONLINE. TYPE 'COMMAND LIST' FOR HELP.`);
         });
     </script>
 </body>
