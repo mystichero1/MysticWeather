@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MysticWeather</title>
+    <!-- Favicon for the browser tab -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48ZmlsdGVyIGlkPSJnbG93Ij48ZmVDb2xvck1hdHJpeCBpbiJGaWx0ZXJNb3JwaCIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjUgMCAwIDAgMTAgMCIvPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjUiIHJlc3VsdD0iYmx1ciIvPjxmZVRyYW5zZm9ybSIgaW49ImJsdXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEsMSkiLz48ZmVDb21wb3NpdGUgaW49IkZpbHRlckdyYXBoaWMiIGluMj0iYmx1ciIgb3BlcmF0b3I9Im92ZXIiLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9ImNlbnRyYWwiIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgUHJpbWUnLCBtb25vc3BhY2U7IGZvbnQtd2VpZ2h0OiBib2xkOyBmb250LXNpemU6IDcwcHg7IGZpbGw6ICMwMGZmMDA7IGZpbHRlcjogdXJsKCNnbG93KTsiPk1XPC90ZXh0Pjwvc3ZnPg==" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -118,14 +120,14 @@
             const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
             const fetchWeatherData = async (location) => {
+                outputTerminal.innerHTML = '';
+                displayOutput(`> EXECUTING QUERY FOR LOCATION: ${location.toUpperCase()}`);
+
                 if (API_KEY === 'YOUR_API_KEY') {
                     showMessage("API KEY ERROR: PLEASE REPLACE 'YOUR_API_KEY' WITH A VALID KEY FROM WEATHERAPI.COM.");
                     return;
                 }
                 
-                outputTerminal.innerHTML = '';
-                displayOutput(`> EXECUTING QUERY FOR LOCATION: ${location.toUpperCase()}`);
-
                 try {
                     await wait(500);
                     await simulateTyping('> PINGING MYSTICWEATHER...');
@@ -179,6 +181,13 @@
                     showMessage("QUERY DENIED: LOCATION FIELD EMPTY.");
                     return;
                 }
+
+                if (location.toLowerCase() === 'creation') {
+                    outputTerminal.innerHTML = '';
+                    displayOutput('Made by MysticHero');
+                    return;
+                }
+
                 fetchWeatherData(location);
             };
 
